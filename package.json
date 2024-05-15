@@ -8,12 +8,14 @@
     "url": "https://github.com/FirebrandTech/xamlator.git"
   },
   "homepage": "https://github.com/FirebrandTech/xamlator",
+  "types": "types/index.d.ts",
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
     "example": "ts-node tests/fixtures/example.ts",
-    "build": "esbuild src/index.ts --bundle --minify --platform=node --outfile=dist/index.js",
-    "publish": "yarn build && npm publish"
+    "build": "esbuild src/index.ts --bundle --minify --platform=node --outfile=index.js --sourcemap",
+    "build:types": "tsc src/index.ts --emitDeclarationOnly --declaration --outdir types",
+    "publish": "yarn build && yarn build:types && npm publish"
   },
   "prettier": {
     "trailingComma": "es5",

@@ -1,5 +1,5 @@
 import { parse } from 'yaml';
-import fs from 'fs';
+import * as fs from 'fs';
 
 type Config = { templatePath?: string; templateString?: string };
 
