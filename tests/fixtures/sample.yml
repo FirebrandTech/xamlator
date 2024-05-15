@@ -1,0 +1,41 @@
+# prettier-ignore
+root: person
+# Static variables to be used in the translations
+variables:
+  COMPANY: 'Acme Inc.'
+  YEAR: 2024
+  YEARS_AT_COMPANY: 7
+# Elements to be created
+elements:
+  # Properties from input data
+  first_name: ${first_name}
+  last_name: ${last_name}
+  email: ${email}
+  # String mapipulated value
+  full_name: "${first_name} ${last_name}"
+  # Element with a property
+  company:
+    value: $${COMPANY}
+    attributes:
+      - name: type
+        value: customer
+      - name: customer_id
+        value: cst12345
+  # Perform a math operation
+  years_at_company: $${YEARS_AT_COMPANY}
+  # Perform a conditional operation
+  tenure: =IF(=LT($${YEARS_AT_COMPANY}, 4), Junior, Senior)
+  # # Nested elements
+  address:
+    street: ${address.street}
+    city: ${address.city}
+    state: ${address.state}
+    zip: ${address.zip}
+  # Array of elements
+  contacts:
+    - contact:
+        name: ${first_name}
+        email: ${email}
+  flags:
+    a: flag-a
+    b: flag-b

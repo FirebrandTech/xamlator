@@ -1,0 +1,29 @@
+<person>
+  <first_name>John</first_name>
+  <last_name>Doe</last_name>
+  <full_name>John Doe</full_name>
+  <email>johndoe@email.com</email>
+  <company type="customer">Acme, Inc.</company>
+  <start_year>2020</start_year>
+  <years_at_company>4</years_at_company>
+  <ira_eligible>false</ira_eligible>
+  <tenure>Junior</tenure>
+  <address>
+    <street>123 Main St</street>
+    <city>Springfield</city>
+    <state>IL</state>
+    <zip>62701</zip>
+  </address>
+  <contacts>
+    <contact>
+      <first_name>Jane</first_name>
+      <last_name>Doe</last_name>
+      <email>janedoe@email.com</email>
+    </contact>
+    <contact>
+      <first_name>Jim</first_name>
+      <last_name>Doe</last_name>
+      <email>jimdoe@email.com</email>
+    </contact>
+  </contacts>
+</person>
