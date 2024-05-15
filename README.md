@@ -29,7 +29,7 @@ xamlator.convert(/* JSON data */);
 
 ## Template Syntax
 
-**[Sample YAML Template](./src/test/sample.yaml)**
+**[Sample YAML Template](./tests/fixtures/sample.yml)**
 
 You can run a sample template using the following command
 which will output the generated XML to the console:
