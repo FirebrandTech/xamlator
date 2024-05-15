@@ -6,6 +6,7 @@
   "scripts": {
     "test": "jest",
     "test:watch": "jest --watchAll",
+    "example": "ts-node tests/fixtures/example.ts",
     "build": "esbuild src/index.ts --bundle --minify --platform=node --outfile=dist/index.js"
   },
   "prettier": {

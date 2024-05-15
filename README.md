@@ -24,6 +24,13 @@ xamlator.convert(/* JSON data */);
 
 **[Sample YAML Template](./src/test/sample.yaml)**
 
+You can run a sample template using the following command
+which will output the generated XML to the console:
+
+```bash
+yarn example
+```
+
 ### Basic Structure
 
 There are three main parts of the template:
