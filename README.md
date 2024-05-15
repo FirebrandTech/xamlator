@@ -2,6 +2,13 @@
 
 Create XML output from JSON data using YAML templates.
 
+## Installation
+
+```bash
+npm i @firebrandgroup/xamlator
+yarn add @firebrandgroup/xamlator
+```
+
 ## Usage
 
 ```typescript
