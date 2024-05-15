@@ -8,11 +8,13 @@ Create XML output from JSON data using YAML templates.
 import { Xamlator } from 'xamlator';
 import { readFileSync } from 'fs';
 
-// Read the template file
-const yamlTemplate = readFileSync('path/to/template.yaml', 'utf8');
+const pathToTemplate = 'path/to/template.yaml';
 
-// Create a new Xamlator instance
-const xamlator = new Xamlator(yamlTemplate);
+// Create a new Xamlator instance with template string
+const yamlTemplate = readFileSync(pathToTemplate, 'utf8');
+const xamlator = new Xamlator({ templateString: yamlTemplate });
+// or specify path to Xamlator should read the template from
+const xamlator = new Xamlator({ templatePath: pathToTemplate });
 
 // Convert JSON data to XML
 xamlator.convert(/* JSON data */);

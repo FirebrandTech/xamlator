@@ -8,7 +8,7 @@ describe('Xamlator', () => {
       fizz: 'buzz'
     `;
     const data = { foo: { fizz: 'buzz' } };
-    const xml = new Xamlator(config).convert(data);
+    const xml = new Xamlator({ templateString: config }).convert(data);
     expect(xml).toBe('<foo><fizz>buzz</fizz></foo>');
   });
   it('should convert a static variable to an xml element', () => {
@@ -18,7 +18,7 @@ describe('Xamlator', () => {
       fizz: \${fizz\}
     `;
     const data = { fizz: 'buzz' };
-    const xamlator = new Xamlator(config);
+    const xamlator = new Xamlator({ templateString: config });
     const xml = xamlator.convert(data);
     expect(xml).toBe('<foo><fizz>buzz</fizz></foo>');
   });
@@ -30,7 +30,7 @@ describe('Xamlator', () => {
         buzz: 'quz'
     `;
     const data = { foo: { fizz: { buzz: 'quz' } } };
-    const xml = new Xamlator(config).convert(data);
+    const xml = new Xamlator({ templateString: config }).convert(data);
     expect(xml).toBe('<foo><fizz><buzz>quz</buzz></fizz></foo>');
   });
   it('should handle arrays of elements', () => {
@@ -42,7 +42,7 @@ describe('Xamlator', () => {
             buzz: \${buzz\}
     `;
     const data = { fizzes: [{ buzz: 'quz' }, { buzz: 'quz2' }] };
-    const xml = new Xamlator(config).convert(data);
+    const xml = new Xamlator({ templateString: config }).convert(data);
     expect(xml).toBe(
       '<foo><fizzes><fizz><buzz>quz</buzz></fizz><fizz><buzz>quz2</buzz></fizz></fizzes></foo>'
     );
@@ -56,7 +56,7 @@ describe('Xamlator', () => {
       fizz: \$\${FIZZ\}
     `;
     const data = { fizz: 'buzz' };
-    const xamlator = new Xamlator(config);
+    const xamlator = new Xamlator({ templateString: config });
     const xml = xamlator.convert(data);
     expect(xml).toBe('<foo><fizz>buzz</fizz></foo>');
   });
@@ -67,7 +67,7 @@ describe('Xamlator', () => {
       fizz: "\${baz\} \${quz\}"
     `;
     const data = { baz: 'fizz', quz: 'buzz' };
-    const xamlator = new Xamlator(config);
+    const xamlator = new Xamlator({ templateString: config });
     const xml = xamlator.convert(data);
     expect(xml).toBe('<foo><fizz>fizz buzz</fizz></foo>');
   });
@@ -82,7 +82,7 @@ describe('Xamlator', () => {
             value: 'quz'
     `;
     const data = { foo: { fizz: 'buzz' } };
-    const xml = new Xamlator(config).convert(data);
+    const xml = new Xamlator({ templateString: config }).convert(data);
     expect(xml).toBe('<foo><fizz baz="quz">buzz</fizz></foo>');
   });
   it('should perform artihmetic operations', () => {
@@ -100,7 +100,7 @@ describe('Xamlator', () => {
       lte: =LTE(\${fizz\}, \${buzz\})
     `;
     const data = { fizz: 4, buzz: 2 };
-    const xamlator = new Xamlator(config);
+    const xamlator = new Xamlator({ templateString: config });
     const xml = xamlator.convert(data);
     expect(xml).toBe(
       '<foo><sum>6</sum><diff>2</diff><prod>8</prod><quot>2</quot><eq>false</eq><gt>true</gt><lt>false</lt><gte>true</gte><lte>false</lte></foo>'
@@ -114,7 +114,7 @@ describe('Xamlator', () => {
       notfizz: =NOT(\${buzz\}, quz, buzz)
     `;
     const data = { buzz: true };
-    const xamlator = new Xamlator(config);
+    const xamlator = new Xamlator({ templateString: config });
     const xml = xamlator.convert(data);
     expect(xml).toBe('<foo><fizz>buzz</fizz><notfizz>buzz</notfizz></foo>');
   });

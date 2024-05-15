@@ -1,19 +1,30 @@
 import { parse } from 'yaml';
+import fs from 'fs';
 
+type Config = { templatePath?: string; templateString?: string };
+
+interface Template {
+  root: string;
+  variables: Record<string, string>;
+  elements: Record<string, any>;
+}
 export class Xamlator {
-  private config: any;
-  private variables: any = {};
+  private variables: Record<string, any> = {};
+  private template: Template;
 
-  constructor(config: any) {
-    this.config = parse(config);
-    this.parseVariables(config.variables);
+  constructor(config: Config) {
+    const tmpl = config.templatePath
+      ? fs.readFileSync(config.templatePath, 'utf8')
+      : config.templateString;
+    this.template = parse(tmpl);
+    this.parseVariables(this.template.variables);
   }
 
   convert(data: any, variables?: Record<string, string>): string {
     // Merge runtime vars with config variables
-    this.parseVariables({ ...variables, ...this.config.variables });
-    const xmlContent = this.parseElements(this.config.elements, data);
-    return `<${this.config.root}>${xmlContent}</${this.config.root}>`;
+    this.parseVariables({ ...variables, ...this.template.variables });
+    const xmlContent = this.parseElements(this.template.elements, data);
+    return `<${this.template.root}>${xmlContent}</${this.template.root}>`;
   }
 
   private parseVariables(variablesConfig: Record<string, string>): void {
