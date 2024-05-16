@@ -15,7 +15,7 @@
     "example": "ts-node tests/fixtures/example.ts",
     "build": "esbuild src/index.ts --bundle --minify --platform=node --outfile=index.js --sourcemap",
     "build:types": "tsc src/index.ts --emitDeclarationOnly --declaration --outdir types",
-    "publish": "yarn build && yarn build:types && npm publish"
+    "prepublish": "yarn build && yarn build:types"
   },
   "prettier": {
     "trailingComma": "es5",
