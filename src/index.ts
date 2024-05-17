@@ -44,7 +44,6 @@ export class Xamlator {
       const element = elements[key];
       if (Array.isArray(element)) {
         // Handle arrays, assuming they represent multiple sub-elements or repeated structures
-        console.log('Array:', key, element, data[key]);
         const items = this.getDataValue(data, key);
         if (Array.isArray(items)) {
           xml += `<${key}>`;
